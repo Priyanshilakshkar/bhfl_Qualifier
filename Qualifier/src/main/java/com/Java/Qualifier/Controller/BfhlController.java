@@ -1,6 +1,7 @@
 package com.Java.Qualifier.Controller;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,6 +18,11 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class BfhlController {
     private final BfhlService bfhlService;
+
+    @GetMapping("/health")
+    public String healthCheck() {
+        return "API is running";
+    }
 
     @PostMapping
     public ResponseEntity<BfhlResponse> process(@RequestBody BfhlRequest request) {
